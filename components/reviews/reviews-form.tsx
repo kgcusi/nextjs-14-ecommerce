@@ -9,6 +9,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@/components/ui/form'
 import {
   Popover,
@@ -35,6 +36,7 @@ export default function ReviewsForm() {
     defaultValues: {
       rating: 0,
       comment: '',
+      productId,
     },
   })
 
@@ -82,22 +84,23 @@ export default function ReviewsForm() {
                       placeholder="How would you describe this product?"
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
             <FormField
               control={form.control}
-              name="comment"
+              name="rating"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel htmlFor="comment">Leave your rating</FormLabel>
+                  <FormLabel htmlFor="rating">Leave your rating</FormLabel>
                   <FormControl>
                     <Input type="hidden" placeholder="Star Rating" {...field} />
                   </FormControl>
                   <div className="flex">
                     {[1, 2, 3, 4, 5].map((value) => (
                       <motion.div
-                        className="relative cursor-pointer"
+                        className="relative cursor-psdwointer"
                         whileTap={{ scale: 0.8 }}
                         whileHover={{ scale: 1.2 }}
                         key={value}
@@ -112,12 +115,13 @@ export default function ReviewsForm() {
                           className={cn(
                             'text-primary bg-transparent transition-all duration-300 ease-in-out',
                             form.getValues('rating') >= value
-                              ? 'text-primary'
+                              ? 'fill-primary'
                               : 'text-muted',
                           )}
                         />
                       </motion.div>
                     ))}
+                    <FormMessage />
                   </div>
                 </FormItem>
               )}

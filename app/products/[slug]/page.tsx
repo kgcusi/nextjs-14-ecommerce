@@ -3,8 +3,10 @@ import ProductShowCase from '@/components/products/product-show-case'
 import ProductType from '@/components/products/product-type'
 import Reviews from '@/components/reviews/reviews'
 import ReviewsForm from '@/components/reviews/reviews-form'
+import Stars from '@/components/reviews/Stars'
 import { Separator } from '@/components/ui/separator'
 import formatPrice from '@/lib/format-price'
+import { getReviewAverage } from '@/lib/review-average'
 import { db } from '@/server'
 import { productVariants } from '@/server/schema'
 import { eq } from 'drizzle-orm'
@@ -35,12 +37,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
     with: {
       product: {
         with: {
+          reviews: true,
           productVariants: { with: { variantImages: true, variantTags: true } },
         },
       },
     },
   })
+
   if (variant) {
+    const reviewAvg = getReviewAverage(
+      variant?.product.reviews.map((review) => review.rating),
+    )
+
     return (
       <main>
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-12">
@@ -51,6 +59,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <h2 className="text-2xl font-bold">{variant?.product.title}</h2>
             <div>
               <ProductType variants={variant.product.productVariants} />
+              <Stars
+                rating={reviewAvg}
+                totalReviews={variant.product.reviews.length}
+              />
             </div>
             <Separator className="my-2" />
             <p className="text-2xl py-2    font-medium">
@@ -78,7 +90,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </div>
           </div>
         </div>
-        {/* <ReviewsForm /> */}
+        <div>
+          <Reviews productId={variant.product.id} />
+        </div>
       </main>
     )
   }
