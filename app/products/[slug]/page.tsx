@@ -1,8 +1,8 @@
+import AddCart from '@/components/cart/add-cart'
 import ProductPick from '@/components/products/product-pick'
 import ProductShowCase from '@/components/products/product-show-case'
 import ProductType from '@/components/products/product-type'
 import Reviews from '@/components/reviews/reviews'
-import ReviewsForm from '@/components/reviews/reviews-form'
 import Stars from '@/components/reviews/Stars'
 import { Separator } from '@/components/ui/separator'
 import formatPrice from '@/lib/format-price'
@@ -88,6 +88,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 />
               ))}
             </div>
+            <AddCart />
           </div>
         </div>
         <div>
