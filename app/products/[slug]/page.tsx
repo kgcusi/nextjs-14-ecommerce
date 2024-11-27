@@ -3,13 +3,15 @@ import ProductPick from '@/components/products/product-pick'
 import ProductShowCase from '@/components/products/product-show-case'
 import ProductType from '@/components/products/product-type'
 import Reviews from '@/components/reviews/reviews'
-import Stars from '@/components/reviews/Stars'
+import Stars from '@/components/reviews/stars'
 import { Separator } from '@/components/ui/separator'
 import formatPrice from '@/lib/format-price'
 import { getReviewAverage } from '@/lib/review-average'
 import { db } from '@/server'
 import { productVariants } from '@/server/schema'
 import { eq } from 'drizzle-orm'
+
+export const revalidate = 60
 
 export async function generateStaticParams() {
   const data = await db.query.productVariants.findMany({

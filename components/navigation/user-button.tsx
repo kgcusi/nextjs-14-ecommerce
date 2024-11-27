@@ -70,9 +70,11 @@ const UserButton = ({ user }: Session) => {
           </div>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem className="group py-2 focus:bg-destructive/30 font-medium cursor-pointer">
+            <DropdownMenuItem
+              onClick={() => router.push('/dashboard/orders')}
+              className="group py-2 focus:bg-destructive/30 font-medium cursor-pointer"
+            >
               <TruckIcon
-                onClick={() => router.push('/dashboard/orders')}
                 size={14}
                 className="mr-3 group-hover:translate-x-1 transition-all duration-200 ease-in-out"
               />

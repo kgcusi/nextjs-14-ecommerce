@@ -61,8 +61,6 @@ export default function ProductShowCase({
             }),
         )}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
       <div className="flex overflow-clip py-2 gap-4">
         {variants.map(
           (variant) =>

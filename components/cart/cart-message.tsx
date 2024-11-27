@@ -29,7 +29,8 @@ export default function CartMessage() {
             <ArrowLeft size={14} /> Head back to cart
           </span>
         )}{' '}
-        {checkoutProgress === 'confirmation-page' && 'Order Confirmed'}{' '}
+        {checkoutProgress === 'confirmation-page' &&
+          'You will receive an email with your receipt'}{' '}
       </DrawerDescription>
     </motion.div>
   )

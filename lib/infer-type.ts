@@ -53,7 +53,7 @@ export type TotalOrders = InferResultType<
   {
     order: { with: { user: true } }
     product: true
-    productVariants: {
+    productVariant: {
       with: { variantImages: true }
     }
   }
