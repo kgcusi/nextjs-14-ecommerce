@@ -16,7 +16,7 @@ import { algoliasearch } from 'algoliasearch'
 const action = createSafeActionClient()
 
 const client = algoliasearch(
-  process.env.ALGOLIA_APP_ID!,
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
   process.env.ALGOLIA_WRITE_KEY!,
 )
 

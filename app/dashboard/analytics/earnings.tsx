@@ -93,7 +93,7 @@ export default function Earnings({
                         key={item.payload.date}
                       >
                         <p>Revenue: ${item.value}</p>
-                        <p>Date: {item.payload.date}</p>
+                        <p>Date: {item.payload.date}</p>``
                       </div>
                     ))}
                   </div>
