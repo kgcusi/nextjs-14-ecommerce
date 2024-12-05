@@ -7,8 +7,8 @@ export const createOrderSchema = z.object({
   products: z.array(
     z.object({
       quantity: z.number(),
-      productId: z.string(),
-      variantId: z.string(),
+      productId: z.number(),
+      variantId: z.number(),
     }),
   ),
 })
