@@ -58,7 +58,7 @@ export const NewPasswordForm = () => {
       cardTitle="Enter a new password"
       backButtonHref="/auth/login"
       backButtonLabel="Back to login"
-      showSocial={false}
+      showSocials={false}
     >
       <div>
         <Form {...form}>
