@@ -87,8 +87,8 @@ export default function PaymentForm({ totalPrice }: { totalPrice: number }) {
           paymentIntentId: data.data.success?.paymentIntentId,
           products: cart.map((item) => ({
             quantity: item.variant.quantity,
-            productId: item.id.toString(),
-            variantId: item.variant.variantId.toString(),
+            productId: item.id,
+            variantId: item.variant.variantId,
           })),
         })
       }
